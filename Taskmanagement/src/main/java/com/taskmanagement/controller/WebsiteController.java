@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,11 +35,25 @@ public class WebsiteController {
         return model;
     }
     
+    @RequestMapping("/dashboard")
+    public ModelAndView myhome()
+    {
+      ModelAndView model = new ModelAndView("dashboard");
+      return model;
+    }
     // Create user account
     @PostMapping("/register")
     public ResponseEntity<String> createUser(@RequestBody CreateUser user) {
+    	
+        
         String response = userService.saveUser(user);
-        return ResponseEntity.ok().body(response);
+        if(response.equalsIgnoreCase("New user created")) {
+        return ResponseEntity.ok().body(response);}
+        else {
+   
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("username or password already exist");
+        }
+    
     }
    
     // Login controller method
