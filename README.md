@@ -16,6 +16,7 @@ This project utilizes a variety of technologies to ensure robust functionality a
 - **Maven**: Maven is used for project management and dependency resolution, streamlining the development process.
 - **Oracle Database**: Oracle Database is used to store user information and task data, ensuring data integrity and reliability.
 - **Eclipse IDE**: Eclipse IDE is used for development and debugging, providing a robust development environment.
+- **PostMan tool**:for testing.
 
 
 ## Installation
